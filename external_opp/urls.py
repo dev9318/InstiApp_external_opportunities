@@ -20,6 +20,7 @@ from django.urls import path
 urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('admin/', admin.site.urls),
+    path('blog/', include('blogs.urls')),
 ]
 
 from django.conf import settings
