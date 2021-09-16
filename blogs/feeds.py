@@ -20,5 +20,9 @@ class BlogFeed(Feed):
     def item_description(self, item):
         return item.content
 
+    def item_pubdate(self, item):
+        return item.published
+
+
     def item_link(self, item):
         return ""
