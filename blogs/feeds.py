@@ -1,7 +1,7 @@
 from django.contrib.syndication.views import Feed 
 from django.urls import reverse_lazy
 
-from .models import Blog
+from .models import Blog, body
 
 class BlogFeed(Feed):
     title = "Blogs added today"
@@ -23,6 +23,8 @@ class BlogFeed(Feed):
     def item_pubdate(self, item):
         return item.published
 
+    def item_author_name(self,item):
+        return item.body
 
     def item_link(self, item):
         return ""
