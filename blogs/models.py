@@ -12,9 +12,17 @@ class Blog(models.Model):
     updated = models.DateTimeField(auto_now=True)
     body = models.ForeignKey('body', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.title
+
     class meta:
+        indexes = [
+            models.Index(fields=['title', ]),
+        ]
+        verbose_name = "Blog Entry"
         verbose_name_plural = "Blog Entries"
         ordering = ("-updated",)
+
 
     def __str__(self):
         return self.title
@@ -26,3 +34,11 @@ class body(models.Model):
 
     def __str__(self):
         return self.name
+
+    class meta:
+        indexes = [
+            models.Index(fields=['name', ]),
+        ]
+        verbose_name = "Body Entry"
+        verbose_name_plural = "Body Entries"
+        ordering = ("name",)
